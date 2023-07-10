@@ -54,7 +54,8 @@ var btnClicked = $(event.target);
 console.log(btnClicked);
 console.log(btnClicked[0].innerHTML);
 var contents = btnClicked[0].innerHTML;
-// $(userInputEl).text(contents);
+$(userInputEl).text(contents);
+$(userInputEl).text(contents);
 // getWeather(userInputCitySplit);
   }
 
