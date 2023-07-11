@@ -73,7 +73,7 @@ $(function () {
   }
 
   function getWeather(citySearch) {
-    var apiUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=' + citySearch + '&appid=9588c7ff15ac40484250f9fa0859fc87';
+    var apiUrl = 'https://api.openweathermap.org/geo/1.0/direct?q=' + citySearch + '&appid=9588c7ff15ac40484250f9fa0859fc87';
 
     fetch(apiUrl)
       .then(function (response) {
