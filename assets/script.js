@@ -1,8 +1,11 @@
+// entire js wrapped in jquery fxn
 $(function () {
+  // assigning tons of var
   var cityContainerEl = document.getElementById("city-container");
   var cityName = $(".cityName");
   var userInputEl = $("#username");
   var currentdateEl = $(".currentDate");
+  // use dayjs to give current date and next 5 days
   var today = dayjs();
   $(currentdateEl).text(today.format("(" + "MMMM D, YYYY" + ")"));
   var tomorrowEl = $(".tomorrow");
@@ -20,29 +23,33 @@ $(function () {
   var tomorrow4El = $(".tomorrow4");
   var tomorrow4DateEl = today.add(5, 'day');
   $(tomorrow4El).text(tomorrow4DateEl.format("MMMM D, YYYY"));
+  var cardEl = $(".weatherInfo");
 
+  // fxn takes user input and adds the weather info to the screen
   var formSubmitHandler = function (event) {
     event.preventDefault();
     var userInputCity = userInputEl.val().trim();
-    // var userInputCitySplit = userInputCity.split(',');
     getWeather(userInputCity);
     saveLastCity(userInputCity);
     renderLastCity();
+    $(cardEl).removeClass("rtSide").addClass("rtSideBlock");
   }
 
+  // runs upon loading
   function init() {
-      renderLastCity();
+    renderLastCity();
   }
 
+  // gives the buttons on the left-hand side for previous searches
   function renderLastCity() {
     var storedCities = JSON.parse(localStorage.getItem("lastCities"));
-      if (storedCities !== null) {
-        cityContainerEl.innerHTML="";
-      for (var i = 0; i< storedCities.length; i++){
-      var button = document.createElement("button");
-      $(button).text(storedCities[i]);
-      $(button).addClass("storedButtons");
-      cityContainerEl.appendChild(button);
+    if (storedCities !== null) {
+      cityContainerEl.innerHTML = "";
+      for (var i = 0; i < storedCities.length; i++) {
+        var button = document.createElement("button");
+        $(button).text(storedCities[i]);
+        $(button).addClass("storedButtons");
+        cityContainerEl.appendChild(button);
       }
     }
     else {
@@ -50,28 +57,32 @@ $(function () {
     }
   }
 
+  // gives previous searched cities buttons functionality
   function handleButtons(event) {
     var btnClicked = $(event.target);
     var contents = btnClicked[0].textContent;
     console.log(contents);
     $(userInputEl).text(contents);
     getWeather(contents);
+    $(cardEl).removeClass("rtSide").addClass("rtSideBlock");
   }
 
-
-
+  // gets last cities array from local storage for the buttons
   var lastCities = JSON.parse(localStorage.getItem("lastCities")) || [];
   function saveLastCity(userInputCity) {
-   if (!lastCities.includes(userInputCity)) {
-    lastCities.unshift(userInputCity);
-    if (lastCities.length > 5)
-    {
-    lastCities.shift();  
+    //  tests to see if the city has been previously searched
+    if (!lastCities.includes(userInputCity)) {
+      // adds new city to the top of the list
+      lastCities.unshift(userInputCity);
+      // tests if the length is greater than 5. if so, it cuts the last in the array to make space for the new one
+      if (lastCities.length > 5) {
+        lastCities.pop();
+      }
+      localStorage.setItem("lastCities", JSON.stringify(lastCities));
     }
-    localStorage.setItem("lastCities", JSON.stringify(lastCities));
-  }
   }
 
+  // uses open weather api to give data for the today and the next 5 day's weather conditions
   function getWeather(citySearch) {
     var apiUrl = 'https://api.openweathermap.org/geo/1.0/direct?q=' + citySearch + '&appid=9588c7ff15ac40484250f9fa0859fc87';
 
@@ -96,9 +107,9 @@ $(function () {
             var iconUrl = "https://openweathermap.org/img/wn/" + iconCode + "@2x.png";
             $("#wicon").attr("src", iconUrl);
 
-            //             var fiveDayArray = data.list[8, 16, 24, 32, 39];
+            //             var fiveDayArray = [8, 16, 24, 32, 39];
             // for(var i = 0; i < fiveDayArray.length; i++){
-            //   console.log = (fiveDayArray[i]);
+            //   console.log(fiveDayArray[i]);
             // }
             $(".tomorrowTemp").text("Temp: " + (((data.list[8].main.temp) - 273.15) * 9 / 5 + 32).toFixed(2) + " °F");
             $(".tomorrowWind").text("Wind: " + (data.list[8].wind.speed).toFixed(2) + " MPH");

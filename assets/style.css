@@ -1,48 +1,54 @@
-
-.input-group 
-{
+/* styles the input box */
+.input-group {
   border-style: none;
   margin: 0 0 20px 0;
-
 }
-#user-form, .btn, #city-container{
+
+/* sets type of cursor for both the input box and the buttons */
+#user-form,
+.btn,
+#city-container {
   cursor: pointer;
 }
 
-.submitButton{
+.submitButton {
   cursor: pointer;
 }
 
-.storedButtons{
+.storedButtons {
   border-radius: 4px;
 }
-.card-header {
-  /* padding: 2.5%; */
-  border-radius: calc(.18rem - 1px) calc(.18rem - 1px) 0 0;
-  
-}
-/* 
-.card-body {
-  padding: 2.5%; */
-/* } */
-.hero {
-  /* padding: 3% 4%; */
 
+.rtSide {
+  display: none;
 }
+
+.rtsideBlock {
+  display: block;
+}
+
+.card-header {
+  border-radius: calc(.18rem - 1px) calc(.18rem - 1px) 0 0;
+}
+
 .form-label,
 .form-input,
-.form-textarea {
-  /* display: block; */
-}
+.form-textarea {}
+
+/* sets flex */
 .flex-row {
   display: flex;
   flex-wrap: wrap;
 }
+
+/* sets flex  */
 .flex-column {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
 }
+
+/* designates the div display */
 div {
   display: inline;
 }
