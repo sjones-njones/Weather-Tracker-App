@@ -8,9 +8,9 @@ https://sjones-njones.github.io/Weather-Tracker-App/
 
 https://github.com/sjones-njones/Weather-Tracker-App.git
 
-![Alt text](image-1.png)
-![Alt text](image-2.png)
-![Alt text](image-3.png)
+![Alt text](./assets/images/image-1.png)
+![Alt text](./assets/images/image-2.png)
+![Alt text](./assets/images/image-3.png)
 
 ## Credits
 While I didn't work directly with anyone on this project, my cohort group helped answer many of my questions. I really enjoy the collaborative nature of this program.  I also received help from a tutor. I also used the following sites for help and suggestions.
