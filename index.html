@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="./assets/style.css" />
   <title>Weather Tracker</title>
 </head>
-
+<!-- left-hand side of screen with buttons and input form -->
 <body class="flex-column min-100-vh min-100-vw">
   <header class="hero">
     <h1 class="bg-primary text-center p-2 mb-3">Weather Dashboard</h1>
@@ -32,7 +32,7 @@
             <button type="submit" class="btn submitButton btn-primary m-1 ">Submit</button>
           </form>
         </div>
-
+<!-- empty div for dynamically added items -->
         <div class="">
           <h3 class="subtitle">Cities Searched For: </h3>
           <div id="city-container" class="list-group">
@@ -40,8 +40,8 @@
         </div>
       </div>
       
-      
-      <div class=" col-9">
+      <!-- rt side of screen for weather info -->
+      <div class=" rtSide weatherInfo col-9">
         <div class=card>
           
           <h2 id = "icon"><img id = "wicon" src = ""></h2>
@@ -51,6 +51,7 @@
           <h3 class="todayHumidity"></h3>
         </div>
         <div class="container">
+          <!-- 5 day weather info -->
           <h3 class="">5-Day Forecast:</h3>
           <div class=" row text-center">
             <div class="border col text-start bg-primary">
